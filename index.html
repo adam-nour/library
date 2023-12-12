@@ -7,29 +7,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button id="showFormButton">+</button>
     <div class="container1">
-      
-        <div class="bookshelf">
-        
+ 
+  <div class="bookshelf"></div>
+  <div class="sidebar"> <button id="showFormButton">Show/Hide</button>
+    <div class="form-card hidden">
+      <form class="bookForm">
+  <label for="title">Title:</label><br />
+  <input type="text" id="title" name="title" required /><br />
+  <label for="author">Author:</label><br />
+  <input type="text" id="author" name="author" required /><br />
+  <label for="pages">Number of Pages:</label><br />
+  <input type="number" id="pages" name="pages" required /><br />
+  <label>Have you read this book?</label><br />
+  <div class="radio-flex">
+  <label for="read-yes">Yes</label>
+  <input type="radio" id="read-yes" name="read" value="Yes" required />
+  <label for="read-no">No</label>
+  <input type="radio" id="read-no" name="read" value="No" required /><br /><br />
+  </div>
+  <button type="submit" class="btn-submit">Add Book</button>
+</form>
+
     </div>
-    <div class="sidebar">
-      
-      <div class="form-card">
-        <form class="bookForm">
-          <label for="title">Title:</label><br />
-          <input type="text" id="title" name="title" /><br />
-          <label for="author">Author:</label><br />
-          <input type="text" id="author" name="author" /><br />
-          <label for="pages">Number of Pages:</label><br />
-          <input type="number" id="pages" name="pages" /><br />
-          <label for="read">Have you read this book? (Yes/No):</label><br />
-          <input type="text" id="read" name="read" /><br /><br />
-          <button type="submit" class="btn-submit">Add Book</button>
-        </form>
-      </div>
-      
-    </div>
+  </div>
+</div>
+
     
     
     <script src="script.js"></script>

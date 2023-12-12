@@ -8,17 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     this.read = read;
   }
 
+  Book.prototype.toggleRead = function() {
+    this.read = this.read === 'Yes' ? 'No' : 'Yes'; // Toggle between 'Yes' and 'No'
+  };
+
   function addBookToLibrary(event) {
     event.preventDefault();
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let read = document.querySelector("#read").value;
+    let read = document.querySelector('input[name="read"]:checked').value;
 
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
 
-    console.log(myLibrary);
     document.querySelector('.bookForm').reset();
     displayBooks();
   }
@@ -30,17 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const formCard = document.querySelector('.form-card');
 
   showFormButton.addEventListener('click', function() {
-    formCard.style.opacity = '1';
-    showFormButton.style.display = 'none';
+    formCard.classList.toggle('hidden');
   });
 
   function displayBooks() {
     const bookshelf = document.querySelector('.bookshelf');
     bookshelf.innerHTML = ''; // Clear existing content
 
-    for (let i = 0; i < myLibrary.length; i++) {
-      const currentBook = myLibrary[i];
-
+    myLibrary.forEach((currentBook, index) => {
       const bookDiv = document.createElement('div');
       bookDiv.classList.add('book');
 
@@ -50,19 +50,29 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>Author: ${currentBook.author}</p>
           <p>Pages: ${currentBook.pages}</p>
           <p>Read: ${currentBook.read}</p>
+          </div>
+        <div class='btn-flex'>
+          <button class='del-btn' data-index='${index}'>-</button>
+          <button class='toggle-read-btn' data-index='${index}'>Read</button>
         </div>
-        <div><button class='del-btn' data-index='${i}'>-</button></div>
       `;
 
       bookDiv.innerHTML = bookInfo;
       bookshelf.appendChild(bookDiv);
-    }
-
+    });
     const deleteButtons = document.querySelectorAll('.del-btn');
     deleteButtons.forEach(button => {
       button.addEventListener('click', function(event) {
         const index = event.target.dataset.index;
         myLibrary.splice(index, 1);
+        displayBooks();
+      });
+    });
+    const toggleReadButtons = document.querySelectorAll('.toggle-read-btn');
+    toggleReadButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        const index = event.target.dataset.index;
+        myLibrary[index].toggleRead(); // Toggle read status
         displayBooks();
       });
     });
