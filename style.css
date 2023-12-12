@@ -1,0 +1,92 @@
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container1{
+    display: flex;
+    height: 100vh;
+    gap: 10px;
+}
+.form-card{
+    background-color: rgb(169, 169, 246);
+    flex: 1;
+    padding: 10px;
+}
+.bookshelf{
+    display: grid;
+    gap: 10px;
+    flex: 4;
+    grid-template-columns: repeat(5, 1fr);
+}
+.bookshelf>div{
+background: url(bookcover.png);
+background-size: contain;
+background-repeat: no-repeat;
+
+height: 200px;
+width: 160px;
+}
+.bookshelf>div>*{
+    font-size: small;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+/* Basic styles for form elements */
+.bookForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #8b2121;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .bookForm label,
+  .bookForm input,
+  .bookForm button {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .bookForm input[type="text"],
+  .bookForm input[type="number"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .bookForm button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3dbc6d;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bookForm button:hover {
+    background-color: #3dbc6d;
+  }
+  
+  /* Styles for bookshelf display */
+  .bookshelf {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .book {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #392222;
+  }
+  
